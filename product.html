@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ATΛL leather boot details — full-grain uppers, hand-stitched welts, UK sizing and easy 14-day exchanges across Pakistan.">
+    <title>Product Details — ATΛL Leather Boots</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ATΛL</a>
+
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link active">Shop</a>
+                <a href="index.html#collections" class="nav-link">Collections</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="about.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="nav-action-btn search-toggle-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="account.html" class="nav-action-btn nav-account-link" aria-label="My account">
+                    <i class="far fa-user"></i>
+                </a>
+                <a href="account.html#wishlist" class="nav-action-btn" aria-label="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="nav-badge wishlist-count-badge">0</span>
+                </a>
+                <button class="nav-action-btn cart-toggle-btn" aria-label="Shopping bag">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="nav-badge cart-count-badge">0</span>
+                </button>
+                <button class="nav-action-btn nav-hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE DRAWER NAVIGATION
+    ============================================================ -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <span class="logo">ATΛL</span>
+            <button id="closeMobileNavBtn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="shop.html" class="mobile-nav-link">Shop All Boots</a>
+            <a href="shop.html?category=Chelsea" class="mobile-nav-link">Chelsea</a>
+            <a href="shop.html?category=Chukka" class="mobile-nav-link">Chukka</a>
+            <a href="shop.html?category=Combat" class="mobile-nav-link">Combat</a>
+            <a href="shop.html?category=Formal" class="mobile-nav-link">Formal</a>
+            <a href="account.html" class="mobile-nav-link">My Account</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="about.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+        <div class="mobile-nav-footer">
+            <p style="font-size:0.75rem; color:var(--color-secondary);">Handcrafted leather boots. Built to be resoled.</p>
+            <div class="mobile-nav-socials">
+                <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    CART DRAWER
+    ============================================================ -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <span class="cart-drawer-title">Shopping Bag</span>
+            <button id="closeCartBtn" class="cart-close-btn" aria-label="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="cartDrawerBody"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">PKR 0</span>
+            </div>
+            <div class="cart-summary-row">
+                <span>Shipping</span>
+                <span id="cartShipping">FREE</span>
+            </div>
+            <div class="cart-summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">PKR 0</span>
+            </div>
+            <button class="btn-primary cart-checkout-btn" id="cartCheckoutBtn">Proceed to Checkout</button>
+            <p class="cart-drawer-note">Free delivery over PKR 15,000 &middot; 14-day exchange</p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    SEARCH OVERLAY
+    ============================================================ -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="container">
+            <div class="search-bar-container">
+                <input type="text" id="headerSearchInput" class="search-input" placeholder="Search boots — chelsea, combat, brown..." aria-label="Search products" />
+                <button id="closeSearchBtn" class="search-close-btn" aria-label="Close search"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    OVERLAYS
+    ============================================================ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content-container" id="modalContentContainer"></div>
+    </div>
+
+    <!-- ============================================================
+    PRODUCT DETAIL PAGE
+    ============================================================ -->
+    <main class="product-page-wrapper">
+        <div class="container" id="productDetailsContainer">
+            <div class="page-loading">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <p class="text-uppercase">Loading boot details...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-logo">ATΛL</div>
+                    <p class="footer-story">Handcrafted leather boots for men. Full-grain leather, stitched welts and soles built to be replaced — made in Pakistan.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-column-title">Shop Boots</h3>
+                    <div class="footer-links">
+                        <a href="shop.html?category=Chelsea" class="footer-link">Chelsea Boots</a>
+                        <a href="shop.html?category=Chukka" class="footer-link">Chukka Boots</a>
+                        <a href="shop.html?category=Combat" class="footer-link">Combat Boots</a>
+                        <a href="shop.html?category=Formal" class="footer-link">Formal Boots</a>
+                        <a href="shop.html?category=Hiking" class="footer-link">Hiking Boots</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-column-title">Customer Care</h3>
+                    <div class="footer-links">
+                        <a href="about.html#contact" class="footer-link">Contact Us</a>
+                        <a href="about.html#size-guide" class="footer-link">Size Guide</a>
+                        <a href="account.html" class="footer-link">Track My Order</a>
+                        <a href="about.html#faq" class="footer-link">FAQs</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-column-title">About</h3>
+                    <div class="footer-links">
+                        <a href="about.html" class="footer-link">Our Story</a>
+                        <a href="about.html#atelier" class="footer-link">The Atelier</a>
+                        <a href="admin.html" class="footer-link">Admin Panel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ATΛL. All rights reserved.</p>
+                <div class="footer-policies">
+                    <a href="about.html" class="footer-policy-link">Privacy Policy</a>
+                    <a href="about.html" class="footer-policy-link">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile navigation">
+        <a href="index.html" class="mbn-item"><i class="fas fa-house"></i><span>Home</span></a>
+        <a href="shop.html" class="mbn-item"><i class="fas fa-store"></i><span>Shop</span></a>
+        <a href="account.html#wishlist" class="mbn-item"><i class="far fa-heart"></i><span>Saved</span></a>
+        <button class="mbn-item cart-toggle-btn" type="button"><i class="fas fa-shopping-bag"></i><span>Bag</span><span class="mbn-badge cart-count-badge">0</span></button>
+        <a href="account.html" class="mbn-item"><i class="far fa-user"></i><span>Account</span></a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="store.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

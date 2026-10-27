@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="ATΛL admin dashboard — manage leather boot products, orders and customers.">
+    <title>Admin Dashboard — ATΛL</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="admin-body">
+
+    <!-- ============================================================
+    ADMIN LOGIN GATE
+    ============================================================ -->
+    <main class="admin-gate" id="adminGate" hidden>
+        <div class="admin-gate-card">
+            <div class="admin-brand admin-brand--center">ATΛL<span>Admin</span></div>
+            <h1 class="admin-gate-title">Control room</h1>
+            <p class="admin-gate-text">Sign in to manage products, orders and customers.</p>
+
+            <form class="admin-login-form" id="adminLoginForm" novalidate>
+                <div class="form-field-wrapper">
+                    <label class="form-label" for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" class="form-input" value="admin@atal.com" autocomplete="username" />
+                </div>
+                <div class="form-field-wrapper">
+                    <label class="form-label" for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="••••••" autocomplete="current-password" />
+                </div>
+                <p class="auth-error" id="adminLoginError" hidden></p>
+                <button type="submit" class="btn-primary" style="width:100%;">Sign in</button>
+            </form>
+
+            <p class="admin-hint">Access is limited to accounts with the <strong>admin</strong> role.</p>
+            <a href="index.html" class="admin-back-link"><i class="fas fa-arrow-left"></i> Back to store</a>
+        </div>
+    </main>
+
+    <!-- ============================================================
+    ADMIN SHELL
+    ============================================================ -->
+    <div class="admin-shell" id="adminShell" hidden>
+        <aside class="admin-sidebar">
+            <div class="admin-brand">ATΛL<span>Admin</span></div>
+
+            <nav class="admin-nav" aria-label="Admin sections">
+                <button class="admin-nav-item active" data-apanel="dashboard" type="button"><i class="fas fa-chart-pie"></i> Dashboard</button>
+                <button class="admin-nav-item" data-apanel="products" type="button"><i class="fas fa-shoe-prints"></i> Products <span class="admin-nav-badge" id="adminProductsBadge">0</span></button>
+                <button class="admin-nav-item" data-apanel="orders" type="button"><i class="fas fa-receipt"></i> Orders <span class="admin-nav-badge" id="adminOrdersBadge">0</span></button>
+                <button class="admin-nav-item" data-apanel="customers" type="button"><i class="fas fa-users"></i> Customers</button>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <a href="index.html"><i class="fas fa-store"></i> View store</a>
+                <button id="adminLogoutBtn" type="button"><i class="fas fa-arrow-right-from-bracket"></i> Sign out</button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div>
+                    <span class="section-eyebrow">ATΛL control room</span>
+                    <h1 class="admin-title" id="adminTitle">Dashboard</h1>
+                </div>
+                <div class="admin-topbar-actions">
+                    <span class="admin-date" id="adminDate"></span>
+                    <button class="btn-secondary btn-sm" id="adminAddProductBtn" type="button"><i class="fas fa-plus"></i> Add product</button>
+                </div>
+            </header>
+
+            <div class="admin-panels">
+                <section class="admin-panel active" id="apanel-dashboard"></section>
+                <section class="admin-panel" id="apanel-products"></section>
+                <section class="admin-panel" id="apanel-orders"></section>
+                <section class="admin-panel" id="apanel-customers"></section>
+            </div>
+        </main>
+    </div>
+
+    <!-- ADMIN MODAL -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-box" id="adminModalBox"></div>
+    </div>
+
+    <!-- TOASTS -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Image datalist for the product form -->
+    <datalist id="imageOptions">
+        <option value="assets/img/ashford-chelsea.png"></option>
+        <option value="assets/img/vantage-chelsea.png"></option>
+        <option value="assets/img/metro-zip.png"></option>
+        <option value="assets/img/ridgeway-chukka.png"></option>
+        <option value="assets/img/sandstone-chukka.png"></option>
+        <option value="assets/img/ironclad-combat.png"></option>
+        <option value="assets/img/sierra-tactical.png"></option>
+        <option value="assets/img/heritage-logger.png"></option>
+        <option value="assets/img/marlowe-oxford.png"></option>
+        <option value="assets/img/windsor-wingtip.png"></option>
+        <option value="assets/img/summit-trail.png"></option>
+        <option value="assets/img/glacier-winter.png"></option>
+        <option value="assets/img/hero-1.png"></option>
+        <option value="assets/img/hero-2.png"></option>
+        <option value="assets/img/cat-chelsea.png"></option>
+        <option value="assets/img/cat-chukka.png"></option>
+        <option value="assets/img/cat-combat.png"></option>
+        <option value="assets/img/cat-formal.png"></option>
+        <option value="assets/img/cat-hiking.png"></option>
+    </datalist>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="store.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

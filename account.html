@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My ATΛL account — track leather boot orders, manage addresses, wishlist and profile.">
+    <title>My Account — ATΛL Leather Boots</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dash-body">
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ATΛL</a>
+
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="index.html#collections" class="nav-link">Collections</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="about.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="nav-action-btn search-toggle-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="account.html" class="nav-action-btn nav-account-link active" aria-label="My account">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="account.html#wishlist" class="nav-action-btn" aria-label="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="nav-badge wishlist-count-badge">0</span>
+                </a>
+                <button class="nav-action-btn cart-toggle-btn" aria-label="Shopping bag">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="nav-badge cart-count-badge">0</span>
+                </button>
+                <button class="nav-action-btn nav-hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE DRAWER NAVIGATION
+    ============================================================ -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+        <div class="mobile-nav-header">
+            <span class="logo">ATΛL</span>
+            <button id="closeMobileNavBtn" aria-label="Close menu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="shop.html" class="mobile-nav-link">Shop All Boots</a>
+            <a href="account.html" class="mobile-nav-link">Overview</a>
+            <a href="account.html#orders" class="mobile-nav-link">My Orders</a>
+            <a href="account.html#wishlist" class="mobile-nav-link">Wishlist</a>
+            <a href="account.html#addresses" class="mobile-nav-link">Addresses</a>
+            <a href="account.html#profile" class="mobile-nav-link">Profile</a>
+        </div>
+        <div class="mobile-nav-footer">
+            <p style="font-size:0.75rem; color:var(--color-secondary);">Handcrafted leather boots. Built to be resoled.</p>
+            <div class="mobile-nav-socials">
+                <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    CART DRAWER
+    ============================================================ -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <span class="cart-drawer-title">Shopping Bag</span>
+            <button id="closeCartBtn" class="cart-close-btn" aria-label="Close cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="cartDrawerBody"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">PKR 0</span>
+            </div>
+            <div class="cart-summary-row">
+                <span>Shipping</span>
+                <span id="cartShipping">FREE</span>
+            </div>
+            <div class="cart-summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">PKR 0</span>
+            </div>
+            <button class="btn-primary cart-checkout-btn" id="cartCheckoutBtn">Proceed to Checkout</button>
+            <p class="cart-drawer-note">Free delivery over PKR 15,000 &middot; 14-day exchange</p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    SEARCH OVERLAY
+    ============================================================ -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="container">
+            <div class="search-bar-container">
+                <input type="text" id="headerSearchInput" class="search-input" placeholder="Search boots — chelsea, combat, brown..." aria-label="Search products" />
+                <button id="closeSearchBtn" class="search-close-btn" aria-label="Close search"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    OVERLAYS
+    ============================================================ -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content-container" id="modalContentContainer"></div>
+    </div>
+
+    <!-- ============================================================
+    ACCOUNT PAGE
+    ============================================================ -->
+    <main class="dash-page">
+        <div class="container">
+
+            <!-- SIGNED OUT: AUTH -->
+            <section class="auth-screen" id="authScreen" hidden>
+                <div class="auth-shell">
+                    <div class="auth-aside">
+                        <span class="section-eyebrow">ATΛL Account</span>
+                        <h1 class="auth-title">Your boots, your orders, your fit.</h1>
+                        <ul class="auth-benefits">
+                            <li><i class="fas fa-box"></i> Track every order in real time</li>
+                            <li><i class="fas fa-heart"></i> Save pairs to your wishlist</li>
+                            <li><i class="fas fa-location-dot"></i> Store delivery addresses</li>
+                            <li><i class="fas fa-arrows-rotate"></i> One-tap reorder of past pairs</li>
+                        </ul>
+                        <div class="auth-aside-image">
+                            <img src="assets/img/hero-2.png" alt="Black leather combat boots" />
+                        </div>
+                    </div>
+
+                    <div class="auth-card">
+                        <div class="auth-tabs" role="tablist">
+                            <button class="auth-tab active" data-auth-tab="login" type="button">Sign in</button>
+                            <button class="auth-tab" data-auth-tab="register" type="button">Create account</button>
+                        </div>
+
+                        <form class="auth-form" id="loginForm" novalidate>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="loginEmail">Email address</label>
+                                <input type="email" id="loginEmail" class="form-input" placeholder="you@example.com" autocomplete="email" />
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" class="form-input" placeholder="Your password" autocomplete="current-password" />
+                            </div>
+                            <button type="submit" class="btn-primary auth-submit">Sign in</button>
+                            <p class="auth-demo">New to AT&Lambda;L? Create an account to track orders and save boots.</p>
+                        </form>
+
+                        <form class="auth-form" id="registerForm" hidden novalidate>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="regName">Full name</label>
+                                <input type="text" id="regName" class="form-input" placeholder="Daniyal Khan" autocomplete="name" />
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="regEmail">Email address</label>
+                                <input type="email" id="regEmail" class="form-input" placeholder="you@example.com" autocomplete="email" />
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="regPhone">Phone number</label>
+                                <input type="tel" id="regPhone" class="form-input" placeholder="03001234567" autocomplete="tel" />
+                            </div>
+                            <div class="form-field-wrapper">
+                                <label class="form-label" for="regPassword">Password</label>
+                                <input type="password" id="regPassword" class="form-input" placeholder="At least 6 characters" autocomplete="new-password" />
+                            </div>
+                            <button type="submit" class="btn-primary auth-submit">Create account</button>
+                        </form>
+
+                        <p class="auth-error" id="authError" hidden></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIGNED IN: DASHBOARD -->
+            <section class="dash-shell" id="dashShell" hidden>
+                <aside class="dash-sidebar">
+                    <div class="dash-user-card">
+                        <div class="dash-avatar" id="dashAvatar">D</div>
+                        <div class="dash-user-meta">
+                            <strong id="dashUserName">Customer</strong>
+                            <span id="dashUserEmail">—</span>
+                        </div>
+                    </div>
+
+                    <nav class="dash-nav" aria-label="Account sections">
+                        <button class="dash-nav-item active" data-panel="overview" type="button"><i class="fas fa-gauge-high"></i> Overview</button>
+                        <button class="dash-nav-item" data-panel="orders" type="button"><i class="fas fa-box"></i> My Orders <span class="dash-nav-badge" id="ordersNavBadge">0</span></button>
+                        <button class="dash-nav-item" data-panel="wishlist" type="button"><i class="fas fa-heart"></i> Wishlist <span class="dash-nav-badge" id="wishlistNavBadge">0</span></button>
+                        <button class="dash-nav-item" data-panel="addresses" type="button"><i class="fas fa-location-dot"></i> Addresses</button>
+                        <button class="dash-nav-item" data-panel="profile" type="button"><i class="fas fa-user-gear"></i> Profile</button>
+                    </nav>
+
+                    <div class="dash-sidebar-footer">
+                        <a href="shop.html" class="dash-back-link"><i class="fas fa-arrow-left"></i> Continue shopping</a>
+                        <button class="dash-logout" id="logoutBtn" type="button"><i class="fas fa-arrow-right-from-bracket"></i> Sign out</button>
+                    </div>
+                </aside>
+
+                <div class="dash-main">
+                    <div class="dash-topbar">
+                        <div>
+                            <span class="section-eyebrow">My account</span>
+                            <h1 class="dash-title" id="dashTitle">Overview</h1>
+                        </div>
+                        <span class="dash-member-since" id="memberSince"></span>
+                    </div>
+
+                    <div class="dash-panels">
+                        <section class="dash-panel active" id="panel-overview"></section>
+                        <section class="dash-panel" id="panel-orders"></section>
+                        <section class="dash-panel" id="panel-wishlist"></section>
+                        <section class="dash-panel" id="panel-addresses"></section>
+                        <section class="dash-panel" id="panel-profile"></section>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+    FOOTER (compact)
+    ============================================================ -->
+    <footer class="footer footer--compact">
+        <div class="container">
+            <div class="footer-bottom" style="padding-top:0;">
+                <p>&copy; 2026 ATΛL. Handcrafted leather boots.</p>
+                <div class="footer-policies">
+                    <a href="shop.html" class="footer-policy-link">Shop</a>
+                    <a href="about.html#contact" class="footer-policy-link">Support</a>
+                    <a href="admin.html" class="footer-policy-link">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile navigation">
+        <a href="index.html" class="mbn-item"><i class="fas fa-house"></i><span>Home</span></a>
+        <a href="shop.html" class="mbn-item"><i class="fas fa-store"></i><span>Shop</span></a>
+        <a href="account.html#wishlist" class="mbn-item"><i class="far fa-heart"></i><span>Saved</span></a>
+        <button class="mbn-item cart-toggle-btn" type="button"><i class="fas fa-shopping-bag"></i><span>Bag</span><span class="mbn-badge cart-count-badge">0</span></button>
+        <a href="account.html" class="mbn-item"><i class="fas fa-user"></i><span>Account</span></a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="store.js"></script>
+    <script src="script.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>

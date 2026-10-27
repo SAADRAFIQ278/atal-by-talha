@@ -1,0 +1,16 @@
+# Local dev helpers (not part of the site)
+_server.js
+
+# Screenshots / test artefacts
+screenshot_*.png
+
+# Editor & OS files
+.qoder/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependency folders (site has no build step, kept for safety)
+node_modules/
